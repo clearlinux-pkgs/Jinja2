@@ -4,7 +4,7 @@
 #
 Name     : Jinja2
 Version  : 2.8
-Release  : 14
+Release  : 15
 URL      : https://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.8.tar.gz
 Source0  : https://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.8.tar.gz
 Summary  : A small but fast and easy to use stand-alone template engine written in pure python.
@@ -29,6 +29,7 @@ this guide:
 Summary: python components for the Jinja2 package.
 Group: Default
 Provides: jinja2-python
+Requires: MarkupSafe-python
 
 %description python
 python components for the Jinja2 package.
@@ -48,8 +49,8 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 python2 setup.py test
 %install
 rm -rf %{buildroot}
-python2 setup.py build -b py2 install --root=%{buildroot}
-python3 setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot}
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 
 %files
 %defattr(-,root,root,-)
