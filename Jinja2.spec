@@ -4,7 +4,7 @@
 #
 Name     : Jinja2
 Version  : 2.8
-Release  : 27
+Release  : 28
 URL      : http://pypi.debian.net/Jinja2/Jinja2-2.8.tar.gz
 Source0  : http://pypi.debian.net/Jinja2/Jinja2-2.8.tar.gz
 Summary  : A small but fast and easy to use stand-alone template engine written in pure python.
