@@ -4,12 +4,13 @@
 #
 Name     : Jinja2
 Version  : 2.9.6
-Release  : 29
+Release  : 30
 URL      : http://pypi.debian.net/Jinja2/Jinja2-2.9.6.tar.gz
 Source0  : http://pypi.debian.net/Jinja2/Jinja2-2.9.6.tar.gz
 Summary  : A small but fast and easy to use stand-alone template engine written in pure python.
 Group    : Development/Tools
 License  : BSD-3-Clause
+Requires: Jinja2-legacypython
 Requires: Jinja2-python
 Requires: Babel
 Requires: MarkupSafe
@@ -21,15 +22,28 @@ BuildRequires : python3-dev
 BuildRequires : setuptools
 
 %description
-Flask Sphinx Styles
-===================
-This repository contains sphinx styles for Flask and Flask related
-projects.  To use this style in your Sphinx documentation, follow
-this guide:
+Jinja2
+        ~~~~~~
+        
+        Jinja2 is a template engine written in pure Python.  It provides a
+        `Django`_ inspired non-XML syntax but supports inline expressions and
+        an optional `sandboxed`_ environment.
+        
+        Nutshell
+        --------
+
+%package legacypython
+Summary: legacypython components for the Jinja2 package.
+Group: Default
+
+%description legacypython
+legacypython components for the Jinja2 package.
+
 
 %package python
 Summary: python components for the Jinja2 package.
 Group: Default
+Requires: Jinja2-legacypython
 Provides: jinja2-python
 
 %description python
@@ -44,7 +58,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1496682106
+export SOURCE_DATE_EPOCH=1505004287
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -54,7 +68,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 python2 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1496682106
+export SOURCE_DATE_EPOCH=1505004287
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -65,7 +79,10 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
