@@ -6,6 +6,8 @@ compat-llvm-soname4
 darktable
 jupyter
 jupyter-notebook-gist
+libdnf
 llvm
 notebook
 pytest-cov
+satyr
