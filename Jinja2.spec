@@ -6,13 +6,14 @@
 #
 Name     : Jinja2
 Version  : 2.10
-Release  : 38
+Release  : 39
 URL      : http://pypi.debian.net/Jinja2/Jinja2-2.10.tar.gz
 Source0  : http://pypi.debian.net/Jinja2/Jinja2-2.10.tar.gz
 Source99 : http://pypi.debian.net/Jinja2/Jinja2-2.10.tar.gz.asc
 Summary  : A small but fast and easy to use stand-alone template engine written in pure python.
 Group    : Development/Tools
 License  : BSD-3-Clause
+Requires: Jinja2-legacypython
 Requires: Jinja2-python3
 Requires: Jinja2-python
 Requires: Babel
@@ -34,6 +35,15 @@ Jinja2
         
         Nutshell
         --------
+
+%package legacypython
+Summary: legacypython components for the Jinja2 package.
+Group: Default
+Requires: python-core
+
+%description legacypython
+legacypython components for the Jinja2 package.
+
 
 %package python
 Summary: python components for the Jinja2 package.
@@ -62,7 +72,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1519344497
+export SOURCE_DATE_EPOCH=1523040359
+python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %check
@@ -71,14 +82,20 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 python2 setup.py test
 %install
+export SOURCE_DATE_EPOCH=1523040359
 rm -rf %{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files legacypython
+%defattr(-,root,root,-)
+/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)
