@@ -6,7 +6,7 @@
 #
 Name     : Jinja2
 Version  : 2.10
-Release  : 39
+Release  : 40
 URL      : http://pypi.debian.net/Jinja2/Jinja2-2.10.tar.gz
 Source0  : http://pypi.debian.net/Jinja2/Jinja2-2.10.tar.gz
 Source99 : http://pypi.debian.net/Jinja2/Jinja2-2.10.tar.gz.asc
