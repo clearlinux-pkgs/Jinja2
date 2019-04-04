@@ -2,6 +2,7 @@
 Flask
 Sphinx
 deprecated-Sphinx
+deprecated-numpy
 gabbi
 nbconvert
 nbsphinx
