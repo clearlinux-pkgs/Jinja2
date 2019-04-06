@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x7A1C87E3F5BC42A8 (davidism@gmail.com)
 #
 Name     : Jinja2
-Version  : 2.10
-Release  : 58
-URL      : http://pypi.debian.net/Jinja2/Jinja2-2.10.tar.gz
-Source0  : http://pypi.debian.net/Jinja2/Jinja2-2.10.tar.gz
-Source99 : http://pypi.debian.net/Jinja2/Jinja2-2.10.tar.gz.asc
+Version  : 2.10.1
+Release  : 59
+URL      : https://files.pythonhosted.org/packages/93/ea/d884a06f8c7f9b7afbc8138b762e80479fb17aedbbe2b06515a12de9378d/Jinja2-2.10.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/93/ea/d884a06f8c7f9b7afbc8138b762e80479fb17aedbbe2b06515a12de9378d/Jinja2-2.10.1.tar.gz
+Source99 : https://files.pythonhosted.org/packages/93/ea/d884a06f8c7f9b7afbc8138b762e80479fb17aedbbe2b06515a12de9378d/Jinja2-2.10.1.tar.gz.asc
 Summary  : A small but fast and easy to use stand-alone template engine written in pure python.
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -56,14 +56,14 @@ python3 components for the Jinja2 package.
 
 
 %prep
-%setup -q -n Jinja2-2.10
+%setup -q -n Jinja2-2.10.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554336662
+export SOURCE_DATE_EPOCH=1554587358
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
