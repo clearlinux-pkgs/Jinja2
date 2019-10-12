@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x7A1C87E3F5BC42A8 (davidism@gmail.com)
 #
 Name     : Jinja2
-Version  : 2.10.1
-Release  : 61
-URL      : https://files.pythonhosted.org/packages/93/ea/d884a06f8c7f9b7afbc8138b762e80479fb17aedbbe2b06515a12de9378d/Jinja2-2.10.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/93/ea/d884a06f8c7f9b7afbc8138b762e80479fb17aedbbe2b06515a12de9378d/Jinja2-2.10.1.tar.gz
-Source99 : https://files.pythonhosted.org/packages/93/ea/d884a06f8c7f9b7afbc8138b762e80479fb17aedbbe2b06515a12de9378d/Jinja2-2.10.1.tar.gz.asc
-Summary  : A small but fast and easy to use stand-alone template engine written in pure python.
+Version  : 2.10.3
+Release  : 62
+URL      : https://files.pythonhosted.org/packages/7b/db/1d037ccd626d05a7a47a1b81ea73775614af83c2b3e53d86a0bb41d8d799/Jinja2-2.10.3.tar.gz
+Source0  : https://files.pythonhosted.org/packages/7b/db/1d037ccd626d05a7a47a1b81ea73775614af83c2b3e53d86a0bb41d8d799/Jinja2-2.10.3.tar.gz
+Source1 : https://files.pythonhosted.org/packages/7b/db/1d037ccd626d05a7a47a1b81ea73775614af83c2b3e53d86a0bb41d8d799/Jinja2-2.10.3.tar.gz.asc
+Summary  : A very fast and expressive template engine.
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: Jinja2-license = %{version}-%{release}
@@ -18,15 +18,16 @@ Requires: Jinja2-python = %{version}-%{release}
 Requires: Jinja2-python3 = %{version}-%{release}
 Requires: Babel
 Requires: MarkupSafe
+BuildRequires : Babel
 BuildRequires : MarkupSafe
 BuildRequires : buildreq-distutils3
 
 %description
-Flask Sphinx Styles
-===================
-This repository contains sphinx styles for Flask and Flask related
-projects.  To use this style in your Sphinx documentation, follow
-this guide:
+Jinja
+=====
+Jinja is a fast, expressive, extensible templating engine. Special
+placeholders in the template allow writing code similar to Python
+syntax. Then the template is passed data to render the final document.
 
 %package license
 Summary: license components for the Jinja2 package.
@@ -56,14 +57,20 @@ python3 components for the Jinja2 package.
 
 
 %prep
-%setup -q -n Jinja2-2.10.1
+%setup -q -n Jinja2-2.10.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1554587358
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1570907809
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -76,8 +83,7 @@ python3 setup.py test
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/Jinja2
-cp LICENSE %{buildroot}/usr/share/package-licenses/Jinja2/LICENSE
-cp docs/_themes/LICENSE %{buildroot}/usr/share/package-licenses/Jinja2/docs__themes_LICENSE
+cp LICENSE.rst %{buildroot}/usr/share/package-licenses/Jinja2/LICENSE.rst
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -88,8 +94,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/Jinja2/LICENSE
-/usr/share/package-licenses/Jinja2/docs__themes_LICENSE
+/usr/share/package-licenses/Jinja2/LICENSE.rst
 
 %files python
 %defattr(-,root,root,-)

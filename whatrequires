@@ -1,12 +1,21 @@
 # This file contains recursive sources that require this package
 Flask
 Sphinx
-deprecated-Sphinx
-deprecated-numpy
-gabbi
+ansible
+bokeh
+home-assistant
+ironic
+jupyterlab
+jupyterlab_server
+mvn-lucene-solr
 nbconvert
 nbsphinx
+neutron
 notebook
+nova
 numpy
 numpydoc
+oslo.middleware
+oslo.reports
+sahara
 scipy
