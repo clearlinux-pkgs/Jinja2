@@ -17,5 +17,6 @@ numpy
 numpydoc
 oslo.middleware
 oslo.reports
+qtwebengine
 sahara
 scipy

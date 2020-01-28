@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x7A1C87E3F5BC42A8 (davidism@gmail.com)
 #
 Name     : Jinja2
-Version  : 2.10.3
-Release  : 66
-URL      : https://files.pythonhosted.org/packages/7b/db/1d037ccd626d05a7a47a1b81ea73775614af83c2b3e53d86a0bb41d8d799/Jinja2-2.10.3.tar.gz
-Source0  : https://files.pythonhosted.org/packages/7b/db/1d037ccd626d05a7a47a1b81ea73775614af83c2b3e53d86a0bb41d8d799/Jinja2-2.10.3.tar.gz
-Source1 : https://files.pythonhosted.org/packages/7b/db/1d037ccd626d05a7a47a1b81ea73775614af83c2b3e53d86a0bb41d8d799/Jinja2-2.10.3.tar.gz.asc
+Version  : 2.11.0
+Release  : 67
+URL      : https://files.pythonhosted.org/packages/30/4b/898001ad08a1c51ffdcfadb028e5654a78484d0a3669d72d56f6ae5472bb/Jinja2-2.11.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/30/4b/898001ad08a1c51ffdcfadb028e5654a78484d0a3669d72d56f6ae5472bb/Jinja2-2.11.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/30/4b/898001ad08a1c51ffdcfadb028e5654a78484d0a3669d72d56f6ae5472bb/Jinja2-2.11.0.tar.gz.asc
 Summary  : A very fast and expressive template engine.
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -57,14 +57,15 @@ python3 components for the Jinja2 package.
 
 
 %prep
-%setup -q -n Jinja2-2.10.3
+%setup -q -n Jinja2-2.11.0
+cd %{_builddir}/Jinja2-2.11.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570907809
+export SOURCE_DATE_EPOCH=1580226798
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -83,7 +84,7 @@ python3 setup.py test
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/Jinja2
-cp LICENSE.rst %{buildroot}/usr/share/package-licenses/Jinja2/LICENSE.rst
+cp %{_builddir}/Jinja2-2.11.0/LICENSE.rst %{buildroot}/usr/share/package-licenses/Jinja2/c4dbdbc12926d4d52c9156e690640f372615c234
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -94,7 +95,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/Jinja2/LICENSE.rst
+/usr/share/package-licenses/Jinja2/c4dbdbc12926d4d52c9156e690640f372615c234
 
 %files python
 %defattr(-,root,root,-)

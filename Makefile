@@ -1,5 +1,5 @@
 PKG_NAME := Jinja2
-URL = https://files.pythonhosted.org/packages/7b/db/1d037ccd626d05a7a47a1b81ea73775614af83c2b3e53d86a0bb41d8d799/Jinja2-2.10.3.tar.gz
+URL = https://files.pythonhosted.org/packages/30/4b/898001ad08a1c51ffdcfadb028e5654a78484d0a3669d72d56f6ae5472bb/Jinja2-2.11.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
