@@ -6,7 +6,7 @@
 #
 Name     : Jinja2
 Version  : 2.11.1
-Release  : 68
+Release  : 69
 URL      : https://files.pythonhosted.org/packages/d8/03/e491f423379ea14bb3a02a5238507f7d446de639b623187bccc111fbecdf/Jinja2-2.11.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/d8/03/e491f423379ea14bb3a02a5238507f7d446de639b623187bccc111fbecdf/Jinja2-2.11.1.tar.gz
 Source1  : https://files.pythonhosted.org/packages/d8/03/e491f423379ea14bb3a02a5238507f7d446de639b623187bccc111fbecdf/Jinja2-2.11.1.tar.gz.asc
@@ -25,9 +25,70 @@ BuildRequires : buildreq-distutils3
 %description
 Jinja
 =====
+
 Jinja is a fast, expressive, extensible templating engine. Special
 placeholders in the template allow writing code similar to Python
 syntax. Then the template is passed data to render the final document.
+
+It includes:
+
+-   Template inheritance and inclusion.
+-   Define and import macros within templates.
+-   HTML templates can use autoescaping to prevent XSS from untrusted
+    user input.
+-   A sandboxed environment can safely render untrusted templates.
+-   AsyncIO support for generating templates and calling async
+    functions.
+-   I18N support with Babel.
+-   Templates are compiled to optimized Python code just-in-time and
+    cached, or can be compiled ahead-of-time.
+-   Exceptions point to the correct line in templates to make debugging
+    easier.
+-   Extensible filters, tests, functions, and even syntax.
+
+Jinja's philosophy is that while application logic belongs in Python if
+possible, it shouldn't make the template designer's job difficult by
+restricting functionality too much.
+
+
+Installing
+----------
+
+Install and update using `pip`_:
+
+.. code-block:: text
+
+    $ pip install -U Jinja2
+
+.. _pip: https://pip.pypa.io/en/stable/quickstart/
+
+
+In A Nutshell
+-------------
+
+.. code-block:: jinja
+
+    {% extends "base.html" %}
+    {% block title %}Members{% endblock %}
+    {% block content %}
+      <ul>
+      {% for user in users %}
+        <li><a href="{{ user.url }}">{{ user.username }}</a></li>
+      {% endfor %}
+      </ul>
+    {% endblock %}
+
+
+Links
+-----
+
+-   Website: https://palletsprojects.com/p/jinja/
+-   Documentation: https://jinja.palletsprojects.com/
+-   Releases: https://pypi.org/project/Jinja2/
+-   Code: https://github.com/pallets/jinja
+-   Issue tracker: https://github.com/pallets/jinja/issues
+-   Test status: https://dev.azure.com/pallets/jinja/_build
+-   Official chat: https://discord.gg/t6rrQZH
 
 %package license
 Summary: license components for the Jinja2 package.
@@ -51,6 +112,7 @@ python components for the Jinja2 package.
 Summary: python3 components for the Jinja2 package.
 Group: Default
 Requires: python3-core
+Provides: pypi(Jinja2)
 
 %description python3
 python3 components for the Jinja2 package.
@@ -65,7 +127,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1580491689
+export SOURCE_DATE_EPOCH=1583161161
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
