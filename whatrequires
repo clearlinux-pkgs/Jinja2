@@ -7,16 +7,13 @@ home-assistant
 ironic
 jupyterlab
 jupyterlab_server
-mvn-lucene-solr
 nbconvert
 nbsphinx
 neutron
 notebook
-nova
 numpy
 numpydoc
 oslo.middleware
 oslo.reports
 qtwebengine
-sahara
 scipy
