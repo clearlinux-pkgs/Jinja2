@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x7A1C87E3F5BC42A8 (davidism@gmail.com)
 #
 Name     : Jinja2
-Version  : 2.11.2
-Release  : 77
-URL      : https://files.pythonhosted.org/packages/64/a7/45e11eebf2f15bf987c3bc11d37dcc838d9dc81250e67e4c5968f6008b6c/Jinja2-2.11.2.tar.gz
-Source0  : https://files.pythonhosted.org/packages/64/a7/45e11eebf2f15bf987c3bc11d37dcc838d9dc81250e67e4c5968f6008b6c/Jinja2-2.11.2.tar.gz
-Source1  : https://files.pythonhosted.org/packages/64/a7/45e11eebf2f15bf987c3bc11d37dcc838d9dc81250e67e4c5968f6008b6c/Jinja2-2.11.2.tar.gz.asc
+Version  : 2.11.3
+Release  : 78
+URL      : https://files.pythonhosted.org/packages/4f/e7/65300e6b32e69768ded990494809106f87da1d436418d5f1367ed3966fd7/Jinja2-2.11.3.tar.gz
+Source0  : https://files.pythonhosted.org/packages/4f/e7/65300e6b32e69768ded990494809106f87da1d436418d5f1367ed3966fd7/Jinja2-2.11.3.tar.gz
+Source1  : https://files.pythonhosted.org/packages/4f/e7/65300e6b32e69768ded990494809106f87da1d436418d5f1367ed3966fd7/Jinja2-2.11.3.tar.gz.asc
 Summary  : A very fast and expressive template engine.
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -59,15 +59,15 @@ python3 components for the Jinja2 package.
 
 
 %prep
-%setup -q -n Jinja2-2.11.2
-cd %{_builddir}/Jinja2-2.11.2
+%setup -q -n Jinja2-2.11.3
+cd %{_builddir}/Jinja2-2.11.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1586801430
+export SOURCE_DATE_EPOCH=1612193273
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -85,7 +85,7 @@ python3 setup.py test
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/Jinja2
-cp %{_builddir}/Jinja2-2.11.2/LICENSE.rst %{buildroot}/usr/share/package-licenses/Jinja2/c4dbdbc12926d4d52c9156e690640f372615c234
+cp %{_builddir}/Jinja2-2.11.3/LICENSE.rst %{buildroot}/usr/share/package-licenses/Jinja2/c4dbdbc12926d4d52c9156e690640f372615c234
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
