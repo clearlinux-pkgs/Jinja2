@@ -12,8 +12,8 @@ jupyterlab_server
 mercurial
 nbconvert
 notebook
-numpy
 numpydoc
 qtwebengine
 salt
 scipy
+vpp
