@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x7A1C87E3F5BC42A8 (davidism@gmail.com)
 #
 Name     : Jinja2
-Version  : 3.0.1
-Release  : 85
-URL      : https://files.pythonhosted.org/packages/39/11/8076571afd97303dfeb6e466f27187ca4970918d4b36d5326725514d3ed3/Jinja2-3.0.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/39/11/8076571afd97303dfeb6e466f27187ca4970918d4b36d5326725514d3ed3/Jinja2-3.0.1.tar.gz
-Source1  : https://files.pythonhosted.org/packages/39/11/8076571afd97303dfeb6e466f27187ca4970918d4b36d5326725514d3ed3/Jinja2-3.0.1.tar.gz.asc
+Version  : 3.0.2
+Release  : 86
+URL      : https://files.pythonhosted.org/packages/f8/86/7c0eb6e8b05385d1ce682abc0f994abd1668e148fb52603fa86e15d4c110/Jinja2-3.0.2.tar.gz
+Source0  : https://files.pythonhosted.org/packages/f8/86/7c0eb6e8b05385d1ce682abc0f994abd1668e148fb52603fa86e15d4c110/Jinja2-3.0.2.tar.gz
+Source1  : https://files.pythonhosted.org/packages/f8/86/7c0eb6e8b05385d1ce682abc0f994abd1668e148fb52603fa86e15d4c110/Jinja2-3.0.2.tar.gz.asc
 Summary  : A very fast and expressive template engine.
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -23,11 +23,11 @@ BuildRequires : MarkupSafe
 BuildRequires : buildreq-distutils3
 
 %description
+Jinja
 =====
-        
-        Jinja is a fast, expressive, extensible templating engine. Special
-        placeholders in the template allow writing code similar to Python
-        syntax. Then the template is passed data to render the final document.
+Jinja is a fast, expressive, extensible templating engine. Special
+placeholders in the template allow writing code similar to Python
+syntax. Then the template is passed data to render the final document.
 
 %package license
 Summary: license components for the Jinja2 package.
@@ -59,15 +59,15 @@ python3 components for the Jinja2 package.
 
 
 %prep
-%setup -q -n Jinja2-3.0.1
-cd %{_builddir}/Jinja2-3.0.1
+%setup -q -n Jinja2-3.0.2
+cd %{_builddir}/Jinja2-3.0.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1621434296
+export SOURCE_DATE_EPOCH=1633400915
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -85,7 +85,7 @@ python3 setup.py test
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/Jinja2
-cp %{_builddir}/Jinja2-3.0.1/LICENSE.rst %{buildroot}/usr/share/package-licenses/Jinja2/c4dbdbc12926d4d52c9156e690640f372615c234
+cp %{_builddir}/Jinja2-3.0.2/LICENSE.rst %{buildroot}/usr/share/package-licenses/Jinja2/c4dbdbc12926d4d52c9156e690640f372615c234
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
