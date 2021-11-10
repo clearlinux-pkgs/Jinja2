@@ -21,6 +21,7 @@ nbconvert
 notebook
 numpydoc
 pyparsing
+qt6base
 qtwebengine
 salt
 scipy
